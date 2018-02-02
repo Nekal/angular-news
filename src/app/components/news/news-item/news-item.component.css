@@ -1,0 +1,27 @@
+.content {
+  max-height: 100px;
+  overflow-x:hidden;
+
+}
+
+.newsLink {
+  text-decoration: none;
+  background: black;
+}
+
+.animated {
+  opacity: 1;
+  transition: 3s;
+  /*visibility: hidden;*/
+}
+
+.new {
+  background: #8fcafe;
+}
+.viewed {
+  background: white;
+}
+
+.display {
+
+}

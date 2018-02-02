@@ -1,0 +1,18 @@
+<header class='navbar-inverse '>
+  <div class='container'>
+    <div class='nav navbar-left'>
+      <li><a href='/'>Instructions</a></li>
+    </div>
+    <div *ngIf="!userData">
+      <div class='nav navbar-right'>
+        <li><a routerLink='/signup'>Sign Up</a></li>
+      </div>
+      <div class='nav navbar-right'>
+        <li><a routerLink='/signin'>Sign In</a></li>
+      </div>
+    </div>
+    <div *ngIf="userData" class='nav navbar-right'>
+      <li><a routerLink='/' (click)="doLogout()">Logout</a></li>
+    </div>
+  </div>
+</header>

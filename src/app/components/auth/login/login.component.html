@@ -1,0 +1,19 @@
+<div *ngIf="!userData" class="container"  style="margin-top: 200px;">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1 ><span class="fa fa-user-o" aria-hidden="true"></span> Sign In
+    </h1>
+    <form (ngSubmit)="doSignIn()" method="post">
+      <div class="form-group">
+        <label>Username</label>
+        <input id="username" type="text" class="form-control" name="username" [(ngModel)]="user.username" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input id="password" type="password" class="form-control" name="password" [(ngModel)]="user.password" required>
+      </div>
+      <button class="btn btn-primary btn-lg">Sign In</button>
+    </form>
+  </div>
+</div>
+<app-not-found *ngIf="userData"></app-not-found>
+
