@@ -5,14 +5,14 @@
     </div>
     <div *ngIf="!userData">
       <div class='nav navbar-right'>
-        <li><a routerLink='/signup'>Sign Up</a></li>
+        <li><a id="signup" routerLink='/signup'>Sign Up</a></li>
       </div>
       <div class='nav navbar-right'>
-        <li><a routerLink='/signin'>Sign In</a></li>
+        <li><a id="signin" routerLink='/signin'>Sign In</a></li>
       </div>
     </div>
     <div *ngIf="userData" class='nav navbar-right'>
-      <li><a routerLink='/' (click)="doLogout()">Logout</a></li>
+      <li><a id="logout" routerLink='/' (click)="doLogout()">Logout</a></li>
     </div>
   </div>
 </header>

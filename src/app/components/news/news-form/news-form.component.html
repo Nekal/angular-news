@@ -1,22 +1,22 @@
 <div *ngIf="userData && userData.role === 'admin'" class='container'>
-  <div class='form-group addNews'>
+  <div id="newsForm" class='form-group addNews'>
     <h3 *ngIf="action === 'create'" class='page-header'>Create news</h3>
     <h3 *ngIf="action === 'edit'" class='page-header'>Edit news</h3>
     <div class='form-group'>
       <label>Title <span>*</span></label>
-      <input class='form-control' placeholder='Input title' [(ngModel)]='news.title'/>
+      <input id='title' class='form-control' placeholder='Input title' [(ngModel)]='news.title'/>
     </div>
     <br />
     <div class='form-group'>
       <label>Description</label>
-      <textarea class='form-control'
+      <textarea id='content' class='form-control'
                 placeholder='Input description'
                 rows='10'
                 [(ngModel)]='news.description'>
       </textarea>
     </div>
-    <button *ngIf="action === 'create'" class='btn btn-primary btn-large' (click)='doCreateNews()'>Create</button>
-    <button *ngIf="action === 'edit'" class='btn btn-primary btn-large' (click)='doEditNews()'>Edit</button>
+    <button id='create' *ngIf="action === 'create'" class='btn btn-primary btn-large' (click)='doCreateNews()'>Create</button>
+    <button id='edit' *ngIf="action === 'edit'" class='btn btn-primary btn-large' (click)='doEditNews()'>Edit</button>
   </div>
 </div>
 <app-not-found *ngIf="!userData || userData.role !== 'admin'"></app-not-found>

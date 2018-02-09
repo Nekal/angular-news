@@ -1,16 +1,16 @@
-<div class='container'>
+<div class='container' style="width: 60%">
   <div class='row'>
-    <div class='col-md-11'>
+    <div class='col-md-12'>
       <div id="animated" class='thumbnail animated'
            [ngClass]="{new: status}"
       >
-        <div class='container'>
-          <a routerLink="/news/{{news.id}}" style="color: black">
+        <div class='container' style="width: 100%">
+          <a id="newsItem" routerLink="/news/{{news.id}}" style="color: black; text-decoration-line: none">
             <div class='row'>
-              <div class='col-lg-10'>
-                <h1 class='mt-10'>{{news.title}}</h1 >
+              <div class='col-lg-12'>
+                <h1 id="newsTitle" class='mt-8'>{{news.title}}</h1 >
                 <hr/>
-                <p class='content'>{{news.description}}</p>
+                <p id="newsContent" class='content'>{{news.description}}</p>
                 <hr/>
                 <ul class='list-inline list-unstyled' style='text-align: right'>
                 <li><a routerLink='/news/{{this.news.id}}' > read me</a></li>

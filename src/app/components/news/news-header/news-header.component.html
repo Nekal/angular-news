@@ -5,12 +5,13 @@
         Welcome to Angular 5
       </h1>
       <p>
-        <a *ngIf="userData.role === 'admin'"
-           class='btn btn-primary btn-large'
-           routerLink='/create'
+        <button *ngIf="userData.role === 'admin'"
+                id="createNews"
+                class='btn btn-primary btn-large'
+                routerLink='/create'
         >
           Create news
-        </a>
+        </button>
       </p>
     </div>
   </div>

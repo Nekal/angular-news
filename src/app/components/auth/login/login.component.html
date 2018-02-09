@@ -2,7 +2,7 @@
   <div class="col-sm-6 col-sm-offset-3">
     <h1 ><span class="fa fa-user-o" aria-hidden="true"></span> Sign In
     </h1>
-    <form (ngSubmit)="doSignIn()" method="post">
+    <form id="loginForm" (ngSubmit)="doSignIn()" method="post">
       <div class="form-group">
         <label>Username</label>
         <input id="username" type="text" class="form-control" name="username" [(ngModel)]="user.username" required>
@@ -11,7 +11,7 @@
         <label>Password</label>
         <input id="password" type="password" class="form-control" name="password" [(ngModel)]="user.password" required>
       </div>
-      <button class="btn btn-primary btn-lg">Sign In</button>
+      <button id="login" class="btn btn-primary btn-lg">Sign In</button>
     </form>
   </div>
 </div>
