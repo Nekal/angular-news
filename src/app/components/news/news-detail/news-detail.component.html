@@ -8,7 +8,8 @@
               <h1 class='mt-3'>{{news.title}}</h1>
               <hr />
               <p>{{news.description}}</p>
-              <ul *ngIf="userData.role === 'admin'" class='list-inline list-unstyled'>
+              <ul *ngIf="userData.role === 'admin' || userData.id === news.userId"
+                  class='list-inline list-unstyled'>
                 <hr />
                 <li><app-news-delete [id]="news.id"></app-news-delete></li>
                 <li><a id="editNews" class='btn btn-primary' routerLink="/edit/{{news.id}}">Edit</a></li>

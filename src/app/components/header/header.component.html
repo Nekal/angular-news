@@ -12,7 +12,20 @@
       </div>
     </div>
     <div *ngIf="userData" class='nav navbar-right'>
-      <li><a id="logout" routerLink='/' (click)="doLogout()">Logout</a></li>
+      <li><a id="logout" routerLink='/' >Logout</a></li>
     </div>
+    <ul class="nav navbar-right" *ngIf="userData">
+      <li class="dropdown">
+        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}<b class="caret"></b></a>-->
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}</a>
+        <ul class="dropdown-menu">
+          <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Profile</a></li>
+          <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Messages</a></li>
+          <li><a routerLink='/profile/{{userData.id}}/mynews' routerLinkActive="active">My News</a></li>
+          <li class="divider"></li>
+          <li><a routerLink='/logout' (click)="doLogout()" routerLinkActive="active">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </header>

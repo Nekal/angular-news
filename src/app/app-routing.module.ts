@@ -7,6 +7,8 @@ import {NewsListComponent} from './components/news/news-list/news-list.component
 import {NewsFormComponent} from './components/news/news-form/news-form.component';
 import {NewsDetailComponent} from './components/news/news-detail/news-detail.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
+import {MessagesFormComponent} from './components/messages/messages-form.component';
 
 const appRoutes: Routes = [
   {
@@ -16,6 +18,10 @@ const appRoutes: Routes = [
   {
     path: 'news/:id',
     component: NewsDetailComponent
+  },
+  {
+    path: 'test',
+    component: MessagesFormComponent
   },
   {
     path: 'signin',
@@ -32,6 +38,14 @@ const appRoutes: Routes = [
   {
     path: 'edit/:id',
     component: NewsFormComponent
+  },
+  {
+    path: 'profile/mymessages',
+    component: NewsFormComponent
+  },
+  {
+    path: 'profile/:id',
+    component: UserProfileComponent
   },
   {
     path: '*',

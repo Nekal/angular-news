@@ -53,7 +53,7 @@ export class NewsFormComponent implements OnInit {
       });
   }
   doEditNews() {
-    this.newsService.editNews(this.userToken, this.news.id, this.news.title, this.news.description, this.userData.id)
+    this.newsService.editNews(this.userToken, this.news.id, this.news.title, this.news.description, this.news.userId)
       .subscribe(() => {
         ActiveNews.setActiveNewsId(this.news.id);
         this.router.navigate(['/']);

@@ -1,18 +1,26 @@
-<div>
-  <div class='jumbotron'>
-    <div class="container">
-      <h1>
-        Welcome to Angular 5
-      </h1>
-      <p>
-        <button *ngIf="userData.role === 'admin'"
-                id="createNews"
-                class='btn btn-primary btn-large'
-                routerLink='/create'
-        >
-          Create news
-        </button>
-      </p>
-    </div>
+<!--<div class="container">-->
+  <!--<div class='jumbotron'>-->
+    <!--<div class="container">-->
+      <!--<div class="container">-->
+      <!--<h1>-->
+        <!--Welcome to Angular 5-->
+      <!--</h1>-->
+      <!--<p>-->
+        <!--<button *ngIf="userData"-->
+                <!--id="createNews"-->
+                <!--class='btn btn-primary btn-large'-->
+                <!--routerLink='/create'-->
+        <!--&gt;-->
+          <!--Create news-->
+        <!--</button>-->
+      <!--</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<header class='jumbotron'>
+  <div style="margin-left: 30%">
+    <h1><i class="fa fa-envira" aria-hidden="true"></i>Welcome to Angular 5</h1>
+    <p *ngIf="userData"><a class='btn btn-primary btn-large' routerLink='/create'>Create news</a></p>
   </div>
-</div>
+</header>

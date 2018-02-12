@@ -33,6 +33,7 @@ export class NewsDetailComponent implements OnInit {
   doGetNews(id: number) {
     this.newsService.getNews(id).subscribe(news => {
       this.news = news;
+      console.log(this.userData.id === this.news.userId);
     });
   }
 }

@@ -11,6 +11,7 @@ export class UserService {
   private signUpUrl = '/api/signup';
   private signInUrl = '/api/signin';
   private getTokenUrl = '/api/token';
+  private profileUrl = '/api/profile';
 
   constructor(private apiService: ApiService) {}
   signUp(username: string, email: string, password: string): Observable<any> {
@@ -44,6 +45,12 @@ export class UserService {
   logout() {
     window.localStorage.removeItem(this.USER_DATA_KEY);
     window.localStorage.removeItem(this.TOKEN_KEY);
+  }
+  getProfile(id: number): Observable<any> {
+    const _params: any = {};
+    _params['id'] = id;
+
+    return this.apiService.perform('get', this.profileUrl, {}, _params);
   }
   getUserToken(): any {
     return JSON.parse(window.localStorage.getItem(this.TOKEN_KEY));
