@@ -1,14 +1,14 @@
 <header class='navbar-inverse '>
   <div class='container'>
     <div class='nav navbar-left'>
-      <li><a href='/'>Instructions</a></li>
+      <li><a href='/'>News</a></li>
     </div>
     <div *ngIf="!userData">
       <div class='nav navbar-right'>
         <li><a id="signup" routerLink='/signup'>Sign Up</a></li>
       </div>
       <div class='nav navbar-right'>
-        <li><a id="signin" routerLink='/signin'>Sign In</a></li>
+        <li><a id="signin" (click)="doLogout()" routerLink='/signin'>Sign In</a></li>
       </div>
     </div>
     <div *ngIf="userData" class='nav navbar-right'>
@@ -20,7 +20,7 @@
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}</a>
         <ul class="dropdown-menu">
           <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Profile</a></li>
-          <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Messages</a></li>
+          <li><a routerLink='/profile/mymessages' routerLinkActive="active">My Messages</a></li>
           <li><a routerLink='/profile/{{userData.id}}/mynews' routerLinkActive="active">My News</a></li>
           <li class="divider"></li>
           <li><a routerLink='/logout' (click)="doLogout()" routerLinkActive="active">Logout</a></li>

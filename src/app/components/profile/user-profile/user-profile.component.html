@@ -1,25 +1,25 @@
-<div class="container">
+<div class="container" style="width: 40%">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">  <h4 >User Profile</h4></div>
       <div class="panel-body">
-        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+        <div class="col-md-10 col-xs-12 col-sm-6 col-lg-12" >
           <div class="container" >
-            <h2>User id:	{{userData.id}}</h2>
+            <h2>User id:	{{profile.id}}</h2>
           </div>
           <hr>
           <ul class="container details" >
-            <li><p><span class="glyphicon glyphicon-flag" style="width:50px;"></span>{{userData.role}}</p></li>
-            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>{{userData.username}}</p></li>
-            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{userData.email}}</p></li>
-            <li><p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span>{{userData.createdAt}}</p></li>
+            <li><p><span class="glyphicon glyphicon-flag" style="width:50px;"></span>{{profile.role}}</p></li>
+            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>{{profile.username}}</p></li>
+            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{profile.email}}</p></li>
+            <li><p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span>{{profile.createdAt}}</p></li>
           </ul>
           <!--<button (click)="openMessageDialog()" class="btn btn-primary btn-lg">Write message</button>-->
           <!--<app-messages *ngIf="messageDialog"></app-messages>-->
           <p>You can pass an existing component as content of the modal window. In this case remember to add content component
             as an <code>entryComponents</code> section of your <code>NgModule</code>.</p>
 
-          <button class="btn btn-outline-primary" (click)="open()">Send message</button>
+          <button *ngIf="userData.id !== profile.id" class="btn btn-outline-primary" (click)="open()">Send message</button>
         </div>
       </div>
     </div>

@@ -8,15 +8,16 @@
   </div>
   <div class="modal-body">
     <label>Title *</label>
-    <input id='title' class='form-control' placeholder='Input title' />
+    <input id='title' class='form-control' [(ngModel)]='message.title' placeholder='Input title' />
     <label>Content *</label>
     <textarea id='content' class='form-control'
               placeholder='Input content'
-              rows='10'>
+              rows='10'
+              [(ngModel)]='message.content'>
     </textarea>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Send</button>
+    <button type="button" class="btn btn-outline-dark" (click)="doSend()">Send</button>
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
   </div>
 </div>

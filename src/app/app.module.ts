@@ -22,7 +22,10 @@ import {NewsDeleteComponent} from './components/news/news-delete/news-delete.com
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {MyMessagesComponent} from './components/profile/my-messages/my-messages.component';
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
-import {MessagesFormComponent} from './components/messages/messages-form.component';
+import {MessagesFormComponent} from './components/messages/message-form/messages-form.component';
+import {MessageService} from './services/message.service';
+import {MessageDetailComponent} from './components/messages/message-detail/message-detail.component';
+import {MessageNotificationComponent} from './components/messages/message-notification/message-notification.component';
 
 
 @NgModule({
@@ -42,6 +45,8 @@ import {MessagesFormComponent} from './components/messages/messages-form.compone
     MyMessagesComponent,
     UserProfileComponent,
     MessagesFormComponent,
+    MessageDetailComponent,
+    MessageNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import {MessagesFormComponent} from './components/messages/messages-form.compone
     UserService,
     NewsService,
     NgbModal,
+    MessageService,
   ],
   entryComponents: [MessagesFormComponent],
   bootstrap: [AppComponent]

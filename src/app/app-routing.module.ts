@@ -8,7 +8,8 @@ import {NewsFormComponent} from './components/news/news-form/news-form.component
 import {NewsDetailComponent} from './components/news/news-detail/news-detail.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
-import {MessagesFormComponent} from './components/messages/messages-form.component';
+import {MessagesFormComponent} from './components/messages/message-form/messages-form.component';
+import {MyMessagesComponent} from './components/profile/my-messages/my-messages.component';
 
 const appRoutes: Routes = [
   {
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'profile/mymessages',
-    component: NewsFormComponent
+    component: MyMessagesComponent
   },
   {
     path: 'profile/:id',

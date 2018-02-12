@@ -1,3 +1,33 @@
-<div id="myNewsList">
-
+<div *ngIf="!viewActiveMessage" class="container tab" style="width: 50%">
+  <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-container">
+              <table class="table table-filter">
+                <tbody>
+                <tr data-status="cancelado" *ngFor="let message of messages">
+                  <td (click)="viewMessage(message.id)">
+                    <div class="media">
+                      <a href="#" class="pull-left">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                      </a>
+                      <div class="media-body" style="width: 100%">
+                        <span class="media-meta pull-right">{{message.createdAt}}</span>
+                        <h4 class="title">
+                          {{message.userId}}
+                        </h4>
+                        <p class="summary">{{message.title}}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>
+<app-message-detail *ngIf="viewActiveMessage" [messageId]="activeMessageId"></app-message-detail>
