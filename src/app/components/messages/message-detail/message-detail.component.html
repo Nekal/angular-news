@@ -15,6 +15,7 @@
                 <li><span><i class="glyphicon glyphicon-calendar"></i> {{message.createdAt}} </span></li>
               </ul>
               <a href="/profile/mymessages" class="btn btn-outline-primary">Back</a>
+              <button class="btn btn-outline-primary" (click)="open()">reply</button>
               <!--<ul *ngIf="userData.role === 'admin' || userData.id === message.userId"-->
                   <!--class='list-inline list-unstyled'>-->
                 <!--<hr />-->

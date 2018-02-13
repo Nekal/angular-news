@@ -26,6 +26,7 @@ import {MessagesFormComponent} from './components/messages/message-form/messages
 import {MessageService} from './services/message.service';
 import {MessageDetailComponent} from './components/messages/message-detail/message-detail.component';
 import {MessageNotificationComponent} from './components/messages/message-notification/message-notification.component';
+import {NguiInfiniteListModule} from '@ngui/infinite-list';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {MessageNotificationComponent} from './components/messages/message-notifi
     ReactiveFormsModule,
     HttpModule,
     NgbModule.forRoot(),
+    NguiInfiniteListModule
   ],
   providers: [
     ApiService,

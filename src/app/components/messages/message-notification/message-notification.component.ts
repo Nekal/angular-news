@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MessageService} from '../../../services/message.service';
 import {Message} from '../../../models/Message';
 import {UserService} from '../../../services/user.service';
@@ -10,7 +10,7 @@ import {UserService} from '../../../services/user.service';
   styleUrls: ['message-notification.component.css']
 })
 
-export class MessageNotificationComponent implements OnInit {
+export class MessageNotificationComponent implements OnInit, OnDestroy {
   newMessage = false;
   connection;
   userData;
@@ -22,9 +22,13 @@ export class MessageNotificationComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.connection = this.messageService.getMessages(this.userData.id).subscribe((message: Message) => {
-      this.newMessage = true;
-      setTimeout(() => this.newMessage = false, 5000);
-    });
+    this.connection = this.messageService.getMessages(this.userData.id)
+      .subscribe(() => {
+        this.newMessage = true;
+        setTimeout(() => this.newMessage = false, 5000);
+      });
+  }
+  ngOnDestroy() {
+    this.connection.unsubscribe();
   }
 }

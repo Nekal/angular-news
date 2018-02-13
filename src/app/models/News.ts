@@ -3,4 +3,5 @@ export class News {
   title: string;
   description: string;
   userId: number;
+  createdAt: Date;
 }

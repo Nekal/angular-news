@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../models/User';
 import {Message} from '../../../models/Message';
 import {MessageService} from '../../../services/message.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MessagesFormComponent} from '../message-form/messages-form.component';
 
 @Component({
   moduleId: module.id,
@@ -15,15 +17,19 @@ export class MessageDetailComponent implements OnInit {
   message: Message = new Message();
   userData: User = new User();
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private modalService: NgbModal) {}
 
   ngOnInit() {
     this.doGetNews();
   }
   doGetNews() {
     this.messageService.getMessage(this.messageId)
-      .subscribe(data => {
-        this.message = data;
+      .subscribe(message => {
+        this.message = message;
       });
+  }
+  open() {
+    const modalRef = this.modalService.open(MessagesFormComponent);
+    modalRef.componentInstance.recipientId = this.message.userId;
   }
 }
