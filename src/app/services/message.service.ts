@@ -9,6 +9,7 @@ import {Message} from '../models/Message';
 export class MessageService {
   private url = 'http://localhost:8000';
   private sendMessages = 'api/send';
+  private newMessages = 'api/new';
   private messagesUrl = 'api/messages';
   private messageUrl = 'api/message';
   private socket = io(this.url);
@@ -19,6 +20,16 @@ export class MessageService {
     _params['id'] = id;
 
     return this.apiService.perform('get', this.messageUrl, {}, _params);
+  }
+  doGetNewMessages(userId: number, status: string) {
+    const _params: any = {};
+    _params['userId'] = userId;
+    _params['status'] = status;
+
+    return this.apiService.perform('get', this.newMessages, {}, _params);
+  }
+  viewedMessage(id: number, status: string) {
+    this.socket.emit('view-message', id, status);
   }
   getAllMessages(token, userId): Observable<any> {
     const _params: any = {};
@@ -36,20 +47,13 @@ export class MessageService {
       this.socket.on('message/' + id, (data: Message) => {
         observer.next(data);
       });
+      this.socket.on('viewedMessage', (data: number) => {
+        observer.next(data);
+      });
       return () => {
         this.socket.disconnect();
       };
     });
     return observable;
-  }
-  sendMessage(token: string, message: Message, userId: number, recipientId: number) {
-    const _bodyData: any = {};
-    _bodyData['token'] = token;
-    _bodyData['title'] = message.title;
-    _bodyData['content'] = message.content;
-    _bodyData['userId'] = userId;
-    _bodyData['recipientId'] = recipientId;
-
-    return this.apiService.perform('post', this.sendMessages, _bodyData);
   }
 }

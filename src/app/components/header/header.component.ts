@@ -26,28 +26,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
   ngOnInit() {
-    this.playAudio();
     this.userData = this.userService.getUserData();
-    this.connection = this.messageService.getMessages(this.userData.id)
-      .subscribe((message: Message) => {
-        this.messages.unshift(message);
-        this.onAudioPlay();
+    this.doGetNewMessages();
+    this.subscribeMessages();
+  }
+  doGetNewMessages() {
+    this.messageService.doGetNewMessages(this.userData.id, 'new')
+      .subscribe((messages) => {
+        this.messages = messages;
       });
   }
   doLogout() {
     this.userService.logout();
     this.router.navigate(['/signin']);
   }
-  ngOnDestroy() {
-    this.connection.unsubscribe();
+  subscribeMessages() {
+    this.connection = this.messageService.getMessages(this.userData.id)
+      .subscribe((data: any) => {
+        if (typeof data === 'number') {
+          this.messages.splice(
+            this.messages.indexOf(this.messages.find((message) => message.id === data)),
+            1
+          );
+        } else {
+          this.messages.unshift(data);
+        }
+        this.onAudioPlay();
+      });
   }
   onAudioPlay() {
     this.audioPlayerRef.nativeElement.play();
   }
-  playAudio() {
-    const audio = new Audio();
-    audio.src = './message.mp3';
-    audio.load();
-    audio.play();
+  ngOnDestroy() {
+    this.connection.unsubscribe();
   }
 }

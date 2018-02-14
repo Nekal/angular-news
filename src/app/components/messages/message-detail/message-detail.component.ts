@@ -26,10 +26,17 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getMessage(this.messageId)
       .subscribe(message => {
         this.message = message;
+        this.doViewedMessage();
       });
   }
   open() {
     const modalRef = this.modalService.open(MessagesFormComponent);
     modalRef.componentInstance.recipientId = this.message.userId;
+  }
+  doViewedMessage() {
+    console.log(this.message.status === 'new');
+    if (this.message.status === 'new') {
+      this.messageService.viewedMessage(this.messageId, 'viewed');
+    }
   }
 }

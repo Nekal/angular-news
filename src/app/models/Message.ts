@@ -3,6 +3,7 @@ export class Message {
   title: string;
   content: string;
   userId: number;
+  status: string;
   recipientId: number;
   createdAt: Date;
 }

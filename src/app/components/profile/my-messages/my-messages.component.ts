@@ -29,8 +29,13 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.connection = this.messageService.getMessages(this.userData.id)
-      .subscribe((message: Message) => {
-        this.messages.unshift(message);
+      .subscribe((data: any) => {
+        if (typeof data === 'number') {
+          this.messages.find((message) => message.id === data).status = 'viewed';
+        } else {
+          console.log(data);
+          this.messages.unshift(data);
+        }
     });
   }
   doGetAllMessages() {

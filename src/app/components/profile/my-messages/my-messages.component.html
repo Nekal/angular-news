@@ -6,7 +6,7 @@
             <div class="table-container">
               <table class="table table-filter">
                 <tbody>
-                  <tr data-status="cancelado" *ngFor="let message of messages">
+                  <tr data-status="cancelado" *ngFor="let message of messages" [ngClass]="{new: message.status === 'new'}">
                     <td (click)="viewMessage(message.id)">
                       <div class="media">
                         <a href="#" class="pull-left">
