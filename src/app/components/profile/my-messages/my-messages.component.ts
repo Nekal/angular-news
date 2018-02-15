@@ -30,10 +30,13 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.connection = this.messageService.getMessages(this.userData.id)
       .subscribe((data: any) => {
-        if (typeof data === 'number') {
-          this.messages.find((message) => message.id === data).status = 'viewed';
+        if (typeof data === 'number' && this.messages) {
+          console.log('status');
+          const item = this.messages.find((message) => message.id === data);
+          if (item) {
+            item.status = 'viewed';
+          }
         } else {
-          console.log(data);
           this.messages.unshift(data);
         }
     });
@@ -45,6 +48,7 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
       });
   }
   viewMessage(id: number) {
+    console.log(id);
     this.activeMessageId = id;
     this.viewActiveMessage = true;
   }

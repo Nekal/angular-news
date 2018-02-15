@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscribeMessages() {
     this.connection = this.messageService.getMessages(this.userData.id)
       .subscribe((data: any) => {
-        if (typeof data === 'number') {
+        if (typeof data === 'number' && this.messages !== undefined) {
           this.messages.splice(
             this.messages.indexOf(this.messages.find((message) => message.id === data)),
             1
