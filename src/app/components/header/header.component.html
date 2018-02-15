@@ -17,8 +17,8 @@
           ><span *ngIf="messages.length !== 0" style="color: red">{{messages.length}}</span>
         </a>
         <ul class="dropdown-menu" style="width: 200px">
-          <div class="alert alert-info fade in" *ngFor="let message of messages">
-            <strong>{{message.userId}}</strong> {{message.title}}
+          <div routerLink="/profile/mymessages" class="alert alert-info fade in" *ngFor="let message of messages">
+            <strong>{{message.User.username}}</strong>, {{message.title}}
           </div>
         </ul>
       </li>

@@ -1,3 +1,5 @@
+import {User} from './User';
+
 export class Message {
   id: number;
   title: string;
@@ -6,4 +8,5 @@ export class Message {
   status: string;
   recipientId: number;
   createdAt: Date;
+  User: User;
 }

@@ -37,6 +37,7 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
             item.status = 'viewed';
           }
         } else {
+          console.log(data);
           this.messages.unshift(data);
         }
     });
@@ -44,6 +45,7 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
   doGetAllMessages() {
     this.messageService.getAllMessages(this.userToken, this.userData.id)
       .subscribe(data => {
+        console.log(data);
         this.messages = data;
       });
   }
