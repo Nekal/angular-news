@@ -13,13 +13,21 @@ export class MessageService {
   private messagesUrl = 'api/messages';
   private messageUrl = 'api/message';
   private socket = io(this.url);
-
+  private chatMessages = 'api/chatmessage';
   constructor(private apiService: ApiService) {}
   getMessage(id: number): Observable<any> {
     const _params: any = {};
     _params['id'] = id;
 
     return this.apiService.perform('get', this.messageUrl, {}, _params);
+  }
+  getChatMessages(token: string, userId: number, recipientId: number): Observable<any> {
+    const _params: any = {};
+    _params['token'] = token;
+    _params['userId'] = userId;
+    _params['recipientId'] = recipientId;
+
+    return this.apiService.perform('get', this.chatMessages, {}, _params);
   }
   doGetNewMessages(userId: number, status: string) {
     const _params: any = {};
@@ -39,7 +47,7 @@ export class MessageService {
     return this.apiService.perform('get', this.messagesUrl, {}, _params);
   }
   sendSocketMessage(message: Message, userId: number, recipientId: number) {
-    this.socket.emit('send-message', message.title, message.content, userId, recipientId);
+    this.socket.emit('send-message', message.content, userId, recipientId);
   }
   getMessages(id) {
     const observable = new Observable(observer => {

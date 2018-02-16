@@ -7,7 +7,7 @@
               <table class="table table-filter">
                 <tbody>
                   <tr data-status="cancelado" *ngFor="let message of messages" [ngClass]="{new: message.status === 'new'}">
-                    <td (click)="viewMessage(message.id)">
+                    <td (click)="viewMessage(message.userId)">
                       <div class="media">
                         <a href="#" class="pull-left">
                           <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
@@ -17,7 +17,7 @@
                           <h4 class="title">
                             {{message.User.username}}
                           </h4>
-                          <p class="summary">{{message.title}}</p>
+                          <p class="summary">{{message.content}}</p>
                         </div>
                       </div>
                     </td>
@@ -30,5 +30,5 @@
       </div>
   </div>
 </div>
-<app-message-detail *ngIf="viewActiveMessage" [messageId]="activeMessageId"></app-message-detail>
+<app-message-detail *ngIf="viewActiveMessage" [senderId]="senderId"></app-message-detail>
 

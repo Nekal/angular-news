@@ -15,9 +15,9 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
   messages: Message[];
   userToken: string;
   userData: User;
-  activeMessageId: number;
+  senderId: number;
   viewActiveMessage = false;
-  connection;
+  // connection;
 
   constructor(private messageService: MessageService, private userService: UserService) {
     this.userToken = this.userService.getUserToken();
@@ -28,19 +28,19 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
     this.doGetAllMessages();
   }
   ngOnInit() {
-    this.connection = this.messageService.getMessages(this.userData.id)
-      .subscribe((data: any) => {
-        if (typeof data === 'number' && this.messages) {
-          console.log('status');
-          const item = this.messages.find((message) => message.id === data);
-          if (item) {
-            item.status = 'viewed';
-          }
-        } else {
-          console.log(data);
-          this.messages.unshift(data);
-        }
-    });
+    // this.connection = this.messageService.getMessages(this.userData.id)
+    //   .subscribe((data: any) => {
+    //     if (typeof data === 'number' && this.messages) {
+    //       console.log('status');
+    //       const item = this.messages.find((message) => message.id === data);
+    //       if (item) {
+    //         item.status = 'viewed';
+    //       }
+    //     } else {
+    //       console.log(data);
+    //       this.messages.unshift(data);
+    //     }
+    // });
   }
   doGetAllMessages() {
     this.messageService.getAllMessages(this.userToken, this.userData.id)
@@ -51,10 +51,10 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
   }
   viewMessage(id: number) {
     console.log(id);
-    this.activeMessageId = id;
+    this.senderId = id;
     this.viewActiveMessage = true;
   }
   ngOnDestroy() {
-    this.connection.unsubscribe();
+    // this.connection.unsubscribe();
   }
 }

@@ -2,8 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../models/User';
 import {Message} from '../../../models/Message';
 import {MessageService} from '../../../services/message.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {MessagesFormComponent} from '../message-form/messages-form.component';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   moduleId: module.id,
@@ -13,30 +12,43 @@ import {MessagesFormComponent} from '../message-form/messages-form.component';
 })
 
 export class MessageDetailComponent implements OnInit {
-  @Input() messageId: number;
-  message: Message = new Message();
-  userData: User = new User();
+  @Input() senderId: number;
+  messages: Message[] = [];
+  userToken: string;
+  userData: User;
+  sendMessage: Message = new Message();
+  connection;
 
-  constructor(private messageService: MessageService, private modalService: NgbModal) {}
+  constructor(private messageService: MessageService, private userService: UserService) {
+    this.userToken = this.userService.getUserToken();
+    const user = this.userService.getUserData();
+    if (user) {
+      this.userData = user;
+    }
+  }
 
   ngOnInit() {
-    this.doGetNews();
-  }
-  doGetNews() {
-    this.messageService.getMessage(this.messageId)
-      .subscribe(message => {
-        this.message = message;
-        this.doViewedMessage();
+    this.doGetChatMessages();
+    this.connection = this.messageService.getMessages(this.userData.id)
+      .subscribe((data: any) => {
+        console.log(data);
+        if (typeof data === 'object') {
+          console.log(data);
+          this.messages.push(data);
+        }
       });
   }
-  open() {
-    const modalRef = this.modalService.open(MessagesFormComponent);
-    modalRef.componentInstance.recipientId = this.message.userId;
+  doGetChatMessages() {
+    this.messageService.getChatMessages(this.userToken, this.userData.id, this.senderId)
+      .subscribe(messages => {
+        this.messages = messages;
+        // this.doViewedMessage();
+      });
   }
-  doViewedMessage() {
-    console.log(this.message.status === 'new');
-    if (this.message.status === 'new') {
-      this.messageService.viewedMessage(this.messageId, 'viewed');
-    }
+  doSend() {
+    this.messageService.sendSocketMessage(
+      this.sendMessage,
+      this.userData.id,
+      this.senderId);
   }
 }

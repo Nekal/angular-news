@@ -18,7 +18,7 @@
         </a>
         <ul class="dropdown-menu" style="width: 200px">
           <div routerLink="/profile/mymessages" class="alert alert-info fade in" *ngFor="let message of messages">
-            <strong>{{message.User.username}}</strong>, {{message.title}}
+            <strong>{{message.User.username}}</strong>, {{message.content}}
           </div>
         </ul>
       </li>
@@ -29,7 +29,7 @@
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}</a>
         <ul class="dropdown-menu">
           <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Profile</a></li>
-          <li><a routerLink='/profile/mymessages' routerLinkActive="active">My Messages</a></li>
+          <li><a href='/profile/mymessages' routerLinkActive="active">My Messages</a></li>
           <li><a routerLink='/profile/{{userData.id}}/mynews' routerLinkActive="active">My News</a></li>
           <li class="divider"></li>
           <li><a routerLink='/logout' (click)="doLogout()" routerLinkActive="active">Logout</a></li>

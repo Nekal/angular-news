@@ -37,14 +37,5 @@ export class MessagesFormComponent implements OnInit {
       this.userData.id,
       this.recipientId);
     this.activeModal.close('Close click');
-    // this.messageService.sendMessage(
-    //   this.userToken,
-    //   this.message,
-    //   this.userData.id,
-    //   this.recipientId
-    // ).subscribe(data => {
-    //   this.activeModal.close('Close click');
-    //   console.log(data);
-    // });
   }
 }
