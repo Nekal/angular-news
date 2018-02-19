@@ -15,7 +15,8 @@ import {Message} from '../../models/Message';
 
 export class HeaderComponent implements OnInit, OnDestroy {
   userData: User;
-  connection;
+  subscribeMessage;
+  subscribeViewedMessage;
   messages: Message[] = [];
   @ViewChild('audioOption') audioPlayerRef: ElementRef;
 
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userData = this.userService.getUserData();
     this.doGetNewMessages();
     this.subscribeMessages();
+    this.subscribeViewedMessages();
   }
   doGetNewMessages() {
     this.messageService.doGetNewMessages(this.userData.id, 'new')
@@ -41,23 +43,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/signin']);
   }
   subscribeMessages() {
-    this.connection = this.messageService.getMessages(this.userData.id)
+    this.subscribeMessage = this.messageService.getMessages(this.userData.id)
       .subscribe((data: any) => {
-        if (typeof data === 'number' && this.messages !== undefined) {
-          this.messages.splice(
-            this.messages.indexOf(this.messages.find((message) => message.id === data)),
-            1
-          );
-        } else {
+        if (data.recipientId === this.userData.id) {
           this.messages.unshift(data);
+          this.onAudioPlay();
         }
-        this.onAudioPlay();
+      });
+  }
+  subscribeViewedMessages() {
+    this.subscribeMessage = this.messageService.getViewedMessageSubscribe()
+      .subscribe(() => {
+        this.doGetNewMessages();
       });
   }
   onAudioPlay() {
     this.audioPlayerRef.nativeElement.play();
   }
   ngOnDestroy() {
-    this.connection.unsubscribe();
+    this.subscribeMessage.unsubscribe();
   }
 }

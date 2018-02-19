@@ -31,18 +31,15 @@ export class MessageDetailComponent implements OnInit {
     this.doGetChatMessages();
     this.connection = this.messageService.getMessages(this.userData.id)
       .subscribe((data: any) => {
-        console.log(data);
-        if (typeof data === 'object') {
-          console.log(data);
-          this.messages.push(data);
-        }
+        this.messages.push(data);
       });
+    this.viewedMessage();
   }
   doGetChatMessages() {
     this.messageService.getChatMessages(this.userToken, this.userData.id, this.senderId)
       .subscribe(messages => {
         this.messages = messages;
-        // this.doViewedMessage();
+        this.viewedMessage();
       });
   }
   doSend() {
@@ -50,5 +47,9 @@ export class MessageDetailComponent implements OnInit {
       this.sendMessage,
       this.userData.id,
       this.senderId);
+    this.sendMessage.content = '';
+  }
+  viewedMessage() {
+    this.messageService.viewedMessage(this.senderId, this.userData.id, 'viewed');
   }
 }

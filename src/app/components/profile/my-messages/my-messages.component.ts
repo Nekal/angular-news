@@ -16,45 +16,34 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
   userToken: string;
   userData: User;
   senderId: number;
-  viewActiveMessage = false;
-  // connection;
+  activeChat = false;
+  activeMessageSubscribe;
 
   constructor(private messageService: MessageService, private userService: UserService) {
     this.userToken = this.userService.getUserToken();
     const user = this.userService.getUserData();
-    if (user) {
-      this.userData = user;
-    }
+    if (user) { this.userData = user; }
     this.doGetAllMessages();
   }
   ngOnInit() {
-    // this.connection = this.messageService.getMessages(this.userData.id)
-    //   .subscribe((data: any) => {
-    //     if (typeof data === 'number' && this.messages) {
-    //       console.log('status');
-    //       const item = this.messages.find((message) => message.id === data);
-    //       if (item) {
-    //         item.status = 'viewed';
-    //       }
-    //     } else {
-    //       console.log(data);
-    //       this.messages.unshift(data);
-    //     }
-    // });
+    this.activeMessageSubscribe = this.messageService.getMessages(this.userData.id)
+      .subscribe((data: any) => {
+        const messageIndex = this.messages.indexOf(this.messages.find((message) => message.userId === data.userId));
+        if (messageIndex !== -1) { this.messages[messageIndex] = data; }
+    });
   }
   doGetAllMessages() {
     this.messageService.getAllMessages(this.userToken, this.userData.id)
       .subscribe(data => {
-        console.log(data);
         this.messages = data;
       });
   }
   viewMessage(id: number) {
     console.log(id);
     this.senderId = id;
-    this.viewActiveMessage = true;
+    this.activeChat = true;
   }
   ngOnDestroy() {
-    // this.connection.unsubscribe();
+    this.activeMessageSubscribe.unsubscribe();
   }
 }

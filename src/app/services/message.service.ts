@@ -36,8 +36,8 @@ export class MessageService {
 
     return this.apiService.perform('get', this.newMessages, {}, _params);
   }
-  viewedMessage(id: number, status: string) {
-    this.socket.emit('view-message', id, status);
+  viewedMessage(userId: number, recipientId: number, status: string) {
+    this.socket.emit('view-message', userId, recipientId, status);
   }
   getAllMessages(token, userId): Observable<any> {
     const _params: any = {};
@@ -49,13 +49,34 @@ export class MessageService {
   sendSocketMessage(message: Message, userId: number, recipientId: number) {
     this.socket.emit('send-message', message.content, userId, recipientId);
   }
+  // getChatSubscribe(recipientId) {
+  //   const observable = new Observable(observer => {
+  //     this.socket = io(this.url);
+  //     this.socket.on('message/' + recipientId, (data: Message) => {
+  //       observer.next(data);
+  //     });
+  //     return () => {
+  //       this.socket.disconnect();
+  //     };
+  //   });
+  //   return observable;
+  // }
+  getViewedMessageSubscribe() {
+    const observable = new Observable(observer => {
+      this.socket = io(this.url);
+      this.socket.on('viewedMessage', (data: number) => {
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      };
+    });
+    return observable;
+  }
   getMessages(id) {
     const observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('message/' + id, (data: Message) => {
-        observer.next(data);
-      });
-      this.socket.on('viewedMessage', (data: number) => {
         observer.next(data);
       });
       return () => {

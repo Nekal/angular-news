@@ -1,4 +1,4 @@
-<div *ngIf="!viewActiveMessage" class="container tab" style="width: 50%">
+<div *ngIf="!activeChat" class="container tab" style="width: 50%">
   <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default">
@@ -30,5 +30,5 @@
       </div>
   </div>
 </div>
-<app-message-detail *ngIf="viewActiveMessage" [senderId]="senderId"></app-message-detail>
+<app-message-detail *ngIf="activeChat" [senderId]="senderId"></app-message-detail>
 

@@ -23,8 +23,8 @@ export class MessageNotificationComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.connection = this.messageService.getMessages(this.userData.id)
-      .subscribe((data) => {
-        if (typeof data !== 'number') {
+      .subscribe((data: any) => {
+        if (data.recipientId === this.userData.id) {
           this.newMessage = true;
           setTimeout(() => this.newMessage = false, 5000);
         }
