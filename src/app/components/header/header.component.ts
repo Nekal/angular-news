@@ -1,5 +1,4 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Howl} from 'howler';
 import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
 import {NavigationEnd, Router} from '@angular/router';

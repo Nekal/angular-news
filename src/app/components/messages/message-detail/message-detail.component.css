@@ -70,17 +70,17 @@ body {
 .messages {
   position: relative;
   list-style: none;
-  padding: 20px 10px 0 10px;
+  padding: 20px 10px 30px 10px;
   margin: 0;
   height: 80%;
-  overflow: scroll;
+  overflow-x: auto;
 }
 .messages .message {
   /*background: #d2dee226;*/
   clear: both;
   overflow: hidden;
   margin-bottom: 20px;
-  transition: all 0.5s linear;
+  transition: all 0.5s liclearfixnear;
 }
 .messages .message.left .avatar {
   background-color: #8fcafe;
@@ -92,7 +92,7 @@ body {
 }
 .messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
   right: 100%;
-  border-right-color: white;
+  border-right-color: #dad2d2;
 }
 .messages .message.left .text {
   color: #424740;

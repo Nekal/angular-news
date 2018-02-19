@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpModule} from '@angular/http';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -26,8 +27,6 @@ import {MessagesFormComponent} from './components/messages/message-form/messages
 import {MessageService} from './services/message.service';
 import {MessageDetailComponent} from './components/messages/message-detail/message-detail.component';
 import {MessageNotificationComponent} from './components/messages/message-notification/message-notification.component';
-import {NguiInfiniteListModule} from '@ngui/infinite-list';
-
 
 @NgModule({
   declarations: [
@@ -56,7 +55,7 @@ import {NguiInfiniteListModule} from '@ngui/infinite-list';
     ReactiveFormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    NguiInfiniteListModule
+    InfiniteScrollModule
   ],
   providers: [
     ApiService,
