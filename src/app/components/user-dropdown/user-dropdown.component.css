@@ -1,0 +1,55 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  top: 32px;
+  padding-left: 0;
+  display: none;
+  min-width: 100px;
+  position: absolute;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  border: 1px solid #c5d0db;
+}
+
+li {
+  display: inline-block;
+  width: 100%;
+}
+
+li * {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #2a5885;
+}
+
+#user {
+  display: none;
+}
+
+label:hover {
+  background: #eceae5;
+  text-decoration: none;
+}
+a:hover {
+  background: #e9e9e9;
+}
+
+label{
+  top: -3px;
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  color: #007bff;
+}
+
+input[type=checkbox]:checked ~ ul {
+  display: block
+}

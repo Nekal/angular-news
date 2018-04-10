@@ -53,7 +53,7 @@ export class MessageDetailComponent implements OnInit {
         this.viewedMessage();
       });
   }
-  doSend() {
+  doSend () {
     this.messageService.sendSocketMessage(
       this.sendMessage,
       this.userData.id,
@@ -61,7 +61,7 @@ export class MessageDetailComponent implements OnInit {
     this.sendMessage.content = '';
     setTimeout(() => this.chatScroll.nativeElement.scrollTop = this.chatScroll.nativeElement.scrollHeight, 50);
   }
-  viewedMessage() {
+  viewedMessage () {
     this.messageService.viewedMessage(this.senderId, this.userData.id, 'viewed');
   }
   onScrollUp () {

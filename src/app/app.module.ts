@@ -27,6 +27,7 @@ import {MessagesFormComponent} from './components/messages/message-form/messages
 import {MessageService} from './services/message.service';
 import {MessageDetailComponent} from './components/messages/message-detail/message-detail.component';
 import {MessageNotificationComponent} from './components/messages/message-notification/message-notification.component';
+import {UserDropdownComponent} from './components/user-dropdown/user-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {MessageNotificationComponent} from './components/messages/message-notifi
     MessagesFormComponent,
     MessageDetailComponent,
     MessageNotificationComponent,
+    UserDropdownComponent,
   ],
   imports: [
     BrowserModule,

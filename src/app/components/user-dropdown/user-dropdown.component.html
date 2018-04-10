@@ -1,0 +1,11 @@
+<div class="dropdown" >
+  <label for="user">{{userData.username}} <b class="caret"></b></label>
+  <input id="user" type="checkbox" >
+  <ul class="dropdown-content">
+    <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Profile</a></li>
+    <li><a href='/profile/mymessages' routerLinkActive="active">My Messages</a></li>
+    <li><a routerLink='/profile/{{userData.id}}/mynews' routerLinkActive="active">My News</a></li>
+    <hr>
+    <li><a (click)="doLogout()">Logout</a></li>
+  </ul>
+</div>

@@ -39,7 +39,6 @@ export class MyMessagesComponent implements OnInit, OnDestroy {
       });
   }
   viewMessage(id: number) {
-    console.log(id);
     this.senderId = id;
     this.activeChat = true;
   }

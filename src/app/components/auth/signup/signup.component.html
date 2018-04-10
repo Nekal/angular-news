@@ -1,5 +1,8 @@
 <div *ngIf="!userData" class="container"  style="margin-top: 200px;">
   <div class="col-sm-6 col-sm-offset-3">
+    <div *ngIf="isError" class="alert alert-danger">
+      <strong>Error!</strong> {{errorMessage}}
+    </div>
     <h1 ><span class="fa fa-user-o" aria-hidden="true"></span> Sign Up
     </h1>
     <form id="signupForm" (ngSubmit)="doSignUp()" method="post">

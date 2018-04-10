@@ -1,4 +1,54 @@
 .detail {
-  padding-bottom: 50px;
-  padding-top: 50px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+.news-container {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+.news-container a {
+  color: black;
+  text-decoration-line: none;
+}
+
+.news-options li {
+  top: 0;
+  padding-right: 3px;
+  position: relative;
+  display: inline-block;
+}
+
+.news-options {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.news-item {
+  padding: 2% 2%;
+  border: 1px solid #b9b9b95e;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  .news-item {
+    padding: 2% 5%;
+  }
+}
+.title {}
+
+.content {}
+
+.edit-button {
+  height: 25px;
+  color: white;
+  background: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+  width: 50px;
+}
+
+.action {
+  float: right;
 }

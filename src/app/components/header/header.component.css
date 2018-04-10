@@ -1,0 +1,48 @@
+header {
+  background: #1d1e1f;
+  width: 100%;
+  height: 35px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+header div {
+  width: auto;
+}
+
+.glyphicon-bell {
+  color: blue;
+  font-size: 15px;
+  top: 0;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  /*top: -2px;*/
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover, a:focus {
+  background: #eceae5;
+  text-decoration: none;
+}
+
+.header-title {
+  float: left;
+}
+
+.header-navigate {
+  float: right;
+  width: 300px;
+}
+
+.bell {
+  color: blue;
+}

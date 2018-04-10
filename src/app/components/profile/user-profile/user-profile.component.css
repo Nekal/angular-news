@@ -1,3 +1,31 @@
-.profile {
-  margin-left: 10%;
+.profile-container {
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-top: 20px;
+}
+
+.profile-header {
+  background: #dddddd87;
+}
+
+.profile-header h2 {
+  margin-bottom: 0;
+  padding: 2%;
+}
+
+ul {
+  padding: 1% 6%;
+}
+
+li {
+  list-style-type: none;
+}
+
+.profile-body {
+  border: 1px solid #dddddd;
+  padding: 2%;
+}
+
+.contact {
+  padding: 1% 6%;
 }

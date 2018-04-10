@@ -1,26 +1,12 @@
-<!--<div class="container">-->
-  <!--<div class='jumbotron'>-->
-    <!--<div class="container">-->
-      <!--<div class="container">-->
-      <!--<h1>-->
-        <!--Welcome to Angular 5-->
-      <!--</h1>-->
-      <!--<p>-->
-        <!--<button *ngIf="userData"-->
-                <!--id="createNews"-->
-                <!--class='btn btn-primary btn-large'-->
-                <!--routerLink='/create'-->
-        <!--&gt;-->
-          <!--Create news-->
-        <!--</button>-->
-      <!--</p>-->
-      <!--</div>-->
-    <!--</div>-->
+<!--<header class='jumbotron'>-->
+  <!--<div style="margin-left: 30%">-->
+    <!--<h1><i class="fa fa-envira" aria-hidden="true"></i>Welcome to Angular 5</h1>-->
+    <!--<p *ngIf="userData"><a class='btn btn-primary btn-large' routerLink='/create'>Create news</a></p>-->
   <!--</div>-->
-<!--</div>-->
-<header class='jumbotron'>
-  <div style="margin-left: 30%">
-    <h1><i class="fa fa-envira" aria-hidden="true"></i>Welcome to Angular 5</h1>
-    <p *ngIf="userData"><a class='btn btn-primary btn-large' routerLink='/create'>Create news</a></p>
+<!--</header>-->
+<div class="news-header">
+  <h1 class="title">Welcome to Angular 5</h1>
+  <div class="news-options">
+    <button routerLink='/create' class="create-button">Create news</button>
   </div>
-</header>
+</div>

@@ -13,6 +13,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   user: User = new User();
   userData: User = null;
+  isError = false;
+  errorMessage = '';
 
   constructor(private userService: UserService, private router: Router) {}
   ngOnInit() {
@@ -27,12 +29,16 @@ export class LoginComponent implements OnInit {
     });
   }
   doSignIn() {
+    this.isError = false;
     this.userService.signIn(this.user.username, this.user.password)
       .subscribe(data => {
         if (data.username !== undefined) {
           this.doGetToken(this.user.username, this.user.password);
           this.userService.setUserData(data);
           this.router.navigate(['/']);
+        } else {
+          this.isError = true;
+          this.errorMessage = 'Incorrect username or password';
         }
       });
   }

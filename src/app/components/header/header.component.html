@@ -1,43 +1,76 @@
-<header class='navbar-inverse '>
-  <div class='container'>
-    <div class='nav navbar-left'>
-      <li><a href='/'>News</a></li>
-    </div>
-    <div *ngIf="!userData">
-      <div class='nav navbar-right'>
-        <li><a id="signup" routerLink='/signup'>Sign Up</a></li>
-      </div>
-      <div class='nav navbar-right'>
-        <li><a id="signin" routerLink='/signin'>Sign In</a></li>
-      </div>
-    </div>
-    <div *ngIf="userData" class='nav navbar-right'>
-      <li>
-        <a data-toggle="dropdown" class="glyphicon glyphicon-bell" style="color: blue; font-size: 15px" href="#"
-          ><span *ngIf="messages.length !== 0" style="color: red">{{messages.length}}</span>
-        </a>
-        <ul class="dropdown-menu" style="width: 200px">
-          <div routerLink="/profile/mymessages" class="alert alert-info fade in" *ngFor="let message of messages">
-            <strong>{{message.User.username}}</strong>, {{message.content}}
-          </div>
-        </ul>
-      </li>
-    </div>
-    <ul class="nav navbar-right" *ngIf="userData">
-      <li class="dropdown">
-        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}<b class="caret"></b></a>-->
-        <a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}</a>
-        <ul class="dropdown-menu">
-          <li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Profile</a></li>
-          <li><a href='/profile/mymessages' routerLinkActive="active">My Messages</a></li>
-          <li><a routerLink='/profile/{{userData.id}}/mynews' routerLinkActive="active">My News</a></li>
-          <li class="divider"></li>
-          <li><a routerLink='/logout' (click)="doLogout()" routerLinkActive="active">Logout</a></li>
-        </ul>
-      </li>
+<!--<header class='navbar-inverse '>-->
+  <!--<div class='container'>-->
+    <!--<div class='nav navbar-left'>-->
+      <!--<li><a href='/'>News</a></li>-->
+    <!--</div>-->
+    <!--<div *ngIf="!userData">-->
+      <!--<div class='nav navbar-right'>-->
+        <!--<li><a id="signup" routerLink='/signup'>Sign Up</a></li>-->
+      <!--</div>-->
+      <!--<div class='nav navbar-right'>-->
+        <!--<li><a id="signin" routerLink='/signin'>Sign In</a></li>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div *ngIf="userData" class='nav navbar-right'>-->
+      <!--<li>-->
+        <!--<a data-toggle="dropdown" class="glyphicon glyphicon-bell" style="color: blue; font-size: 15px" href="#"-->
+          <!--&gt;<span *ngIf="messages.length !== 0" style="color: red">{{messages.length}}</span>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu" style="width: 200px">-->
+          <!--<div routerLink="/profile/mymessages" class="alert alert-info fade in" *ngFor="let message of messages">-->
+            <!--<strong>{{message.User.username}}</strong>, {{message.content}}-->
+          <!--</div>-->
+        <!--</ul>-->
+      <!--</li>-->
+    <!--</div>-->
+    <!--<ul class="nav navbar-right" *ngIf="userData">-->
+      <!--<li class="dropdown">-->
+        <!--&lt;!&ndash;<a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}<b class="caret"></b></a>&ndash;&gt;-->
+        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#">User {{ userData.username}}</a>-->
+        <!--<ul class="dropdown-menu">-->
+<!--<li><a routerLink='/profile/{{userData.id}}' routerLinkActive="active">My Profile</a></li>-->
+<!--<li><a href='/profile/mymessages' routerLinkActive="active">My Messages</a></li>-->
+<!--<li><a routerLink='/profile/{{userData.id}}/mynews' routerLinkActive="active">My News</a></li>-->
+<!--<li class="divider"></li>-->
+<!--<li><a routerLink='/logout' (click)="doLogout()" routerLinkActive="active">Logout</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</header>-->
+<header>
+  <div class="header-title">
+    <ul>
+      <li><a class="title" routerLink="/">News</a></li>
     </ul>
   </div>
+  <div class="header-navigate">
+    <div *ngIf="!userData" class="no-auth">
+      <a routerLink="/signin">Sign In</a>
+      <a routerLink="/signup">Sign Up</a>
+    </div>
+    <div *ngIf="userData" class="auth">
+      <ul>
+        <app-user-dropdown></app-user-dropdown>
+        <li>
+          <div *ngIf="userData" class='nav' style="display: block">
+            <li>
+              <a data-toggle="dropdown" class="glyphicon glyphicon-bell" style="color: blue; font-size: 15px" href="#"
+              ><span *ngIf="messages.length !== 0" style="color: red">{{messages.length}}</span>
+              </a>
+              <ul class="dropdown-menu" style="width: 200px">
+                <div routerLink="/profile/mymessages" class="alert alert-info fade in" *ngFor="let message of messages">
+                  <strong>{{message.User.username}}</strong>, {{message.content}}
+                </div>
+              </ul>
+            </li>
+         </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
+
 <audio #audioOption>
   <source src='http://ahandfulof.me/fail/zvuk-soobshcheniya-v-kontakte.mp3' type="audio/mp3">
 </audio>

@@ -29,7 +29,7 @@ export class MessageService {
 
     return this.apiService.perform('get', this.chatMessages, {}, _params);
   }
-  doGetNewMessages(userId: number, status: string) {
+  getNewMessages(userId: number, status: string) {
     const _params: any = {};
     _params['userId'] = userId;
     _params['status'] = status;
@@ -73,7 +73,7 @@ export class MessageService {
     });
     return observable;
   }
-  getMessages(id) {
+  getMessages(id: number) {
     const observable = new Observable(observer => {
       this.socket = io(this.url);
       this.socket.on('message/' + id, (data: Message) => {

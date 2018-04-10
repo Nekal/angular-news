@@ -1,17 +1,43 @@
-.content {
-  max-height: 100px;
-  overflow-x:hidden;
+.news-container {
+  padding-left: 25%;
+  padding-right: 25%;
+  max-height: 190px;
+  overflow: hidden;
+}
+.news-container a {
+  color: black;
+  text-decoration-line: none;
+}
+
+.news-item {
+  max-height: 190px;
+  padding: 2% 2%;
+  border: 1px solid #b9b9b95e;
+  border-radius: 5px;
+}
+
+.news-item:focus {
+  border: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .news-item {
+    padding: 5% 5%;
+  }
+}
+.title {
 
 }
 
-.newsLink {
-  text-decoration: none;
-  background: black;
+.content {
+  max-height: 90px;
+  overflow-x:hidden;
 }
 
 .animated {
+  background: transparent;
   opacity: 1;
-  transition: 3s;
+  transition: background 3s ;
   /*visibility: hidden;*/
 }
 
@@ -22,6 +48,3 @@
   background: white;
 }
 
-.display {
-
-}

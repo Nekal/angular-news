@@ -23,43 +23,46 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.events.filter(event => event instanceof NavigationEnd)
       .subscribe(() => {
         this.userData = this.userService.getUserData();
+        this.doGetNewMessages();
+        this.subscribeMessages();
+        this.subscribeViewedMessages();
       });
+
   }
-  ngOnInit() {
-    this.userData = this.userService.getUserData();
-    this.doGetNewMessages();
-    this.subscribeMessages();
-    this.subscribeViewedMessages();
-  }
+  ngOnInit() { }
   doGetNewMessages() {
-    this.messageService.doGetNewMessages(this.userData.id, 'new')
-      .subscribe((messages) => {
-        this.messages = messages;
-      });
-  }
-  doLogout() {
-    this.userService.logout();
-    this.router.navigate(['/signin']);
+    if (this.userData) {
+      this.messageService.getNewMessages(this.userData.id, 'new')
+        .subscribe((messages) => {
+          this.messages = messages;
+        });
+    }
   }
   subscribeMessages() {
-    this.subscribeMessage = this.messageService.getMessages(this.userData.id)
-      .subscribe((data: any) => {
-        if (data.recipientId === this.userData.id) {
-          this.messages.unshift(data);
-          this.onAudioPlay();
-        }
-      });
+    if (this.userData) {
+      this.subscribeMessage = this.messageService.getMessages(this.userData.id)
+        .subscribe((data: any) => {
+          if (data.recipientId === this.userData.id) {
+            this.messages.unshift(data);
+            this.onAudioPlay();
+          }
+        });
+    }
   }
   subscribeViewedMessages() {
-    this.subscribeMessage = this.messageService.getViewedMessageSubscribe()
-      .subscribe(() => {
-        this.doGetNewMessages();
-      });
+    if (this.userData) {
+      this.subscribeViewedMessage = this.messageService.getViewedMessageSubscribe()
+        .subscribe(() => {
+          console.log('asdsa')
+          this.doGetNewMessages();
+        });
+    }
   }
   onAudioPlay() {
     this.audioPlayerRef.nativeElement.play();
   }
   ngOnDestroy() {
     this.subscribeMessage.unsubscribe();
+    this.subscribeViewedMessage.unsubscribe();
   }
 }

@@ -1,23 +1,42 @@
-<div class="container" style="width: 40%">
-  <div class="row">
-    <div class="panel panel-default" style="width: 80%">
-      <div class="panel-heading">  <h4 >User Profile</h4></div>
-      <div class="panel-body">
-        <div class="col-md-12 col-xs-12 col-sm-6 col-lg-12" >
-          <div class="container" >
-            <h2>User id:	{{profile.id}}</h2>
-          </div>
-          <hr>
-          <ul class="container details" >
-            <li><p><span class="glyphicon glyphicon-flag" style="width:50px;"></span>{{profile.role}}</p></li>
-            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>{{profile.username}}</p></li>
-            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{profile.email}}</p></li>
-            <li><p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span>{{profile.createdAt}}</p></li>
-          </ul>
-          <p>You can send a message to the <code>{{profile.username}}</code>.</p>
-          <button *ngIf="userData.id !== profile.id" class="btn btn-outline-primary" (click)="open()">Send message</button>
-        </div>
-      </div>
+<!--<div class="container" style="width: 40%">-->
+  <!--<div class="row">-->
+    <!--<div class="panel panel-default" style="width: 80%">-->
+      <!--<div class="panel-heading">  <h4 >User Profile</h4></div>-->
+      <!--<div class="panel-body">-->
+        <!--<div class="col-md-12 col-xs-12 col-sm-6 col-lg-12" >-->
+          <!--<div class="container" >-->
+            <!--<h2>User id:	{{profile.id}}</h2>-->
+          <!--</div>-->
+          <!--<hr>-->
+          <!--<ul class="container details" >-->
+            <!--<li><p><span class="glyphicon glyphicon-flag" style="width:50px;"></span>{{profile.role}}</p></li>-->
+            <!--<li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>{{profile.username}}</p></li>-->
+            <!--<li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{profile.email}}</p></li>-->
+            <!--<li><p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span>{{profile.createdAt}}</p></li>-->
+          <!--</ul>-->
+          <!--<p>You can send a message to the <code>{{profile.username}}</code>.</p>-->
+          <!--<button *ngIf="userData.id !== profile.id" class="btn btn-outline-primary" (click)="open()">Send message</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="profile-container">
+  <div class="profile-header">
+    <h2>User Profile</h2>
+  </div>
+  <div class="profile-body">
+    <ul>
+      <li><h2>Username:	{{profile.username}}</h2></li>
+      <hr>
+      <li><p><span class="glyphicon glyphicon-user one"></span> {{profile.id}}</p></li>
+      <li><p><span class="glyphicon glyphicon-flag"></span> {{profile.role}}</p></li>
+      <li><p><span class="glyphicon glyphicon-envelope one"></span> {{profile.email}}</p></li>
+      <li><p><span class="glyphicon glyphicon-calendar one"></span> {{profile.createdAt}}</p></li>
+    </ul>
+    <div *ngIf="userData.id !== profile.id" class="contact">
+      <p>You can send a message to the <code>{{profile.username}}</code>.</p>
+      <button *ngIf="userData.id !== profile.id" class="btn btn-outline-primary" (click)="open()">Send message</button>
     </div>
   </div>
 </div>

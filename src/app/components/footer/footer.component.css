@@ -1,21 +1,19 @@
-.footer-bottom {
+.footer {
+  position: fixed;
+  bottom: 0;
+  color: white;
   background-color: #15224f;
-  min-height: 30px;
   width: 100%;
 }
-.copyright {
-  color: #fff;
-  line-height: 30px;
-  min-height: 30px;
-  padding: 7px 0;
+
+.footer * {
+  padding: 16px 10%;
 }
-.design {
-  color: #fff;
-  line-height: 30px;
-  min-height: 30px;
-  padding: 7px 0;
-  text-align: right;
+
+.left {
+  float: left;
 }
-.design a {
-  color: #fff;
+.right {
+  float: right;
 }
+

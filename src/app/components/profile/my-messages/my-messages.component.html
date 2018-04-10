@@ -1,33 +1,55 @@
-<div *ngIf="!activeChat" class="container tab" style="width: 50%">
-  <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="table-container">
-              <table class="table table-filter">
-                <tbody>
-                  <tr data-status="cancelado" *ngFor="let message of messages" [ngClass]="{new: message.status === 'new'}">
-                    <td (click)="viewMessage(message.userId)">
-                      <div class="media">
-                        <a href="#" class="pull-left">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-                        </a>
-                        <div class="media-body" style="width: 100%">
-                          <span class="media-meta pull-right">{{message.createdAt}}</span>
-                          <h4 class="title">
-                            {{message.User.username}}
-                          </h4>
-                          <p class="summary">{{message.content}}</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+<!--<div *ngIf="!activeChat" class="container tab" style="width: 50%">-->
+  <!--<div class="row">-->
+      <!--<div class="col-md-12">-->
+        <!--<div class="panel panel-default">-->
+          <!--<div class="panel-body">-->
+            <!--<div class="table-container">-->
+              <!--<table class="table table-filter">-->
+                <!--<tbody>-->
+                  <!--<tr data-status="cancelado" *ngFor="let message of messages" [ngClass]="{new: message.status === 'new'}">-->
+                    <!--<td (click)="viewMessage(message.userId)">-->
+                      <!--<div class="media">-->
+                        <!--<a href="#" class="pull-left">-->
+                          <!--<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">-->
+                        <!--</a>-->
+                        <!--<div class="media-body" style="width: 100%">-->
+                          <!--<span class="media-meta pull-right">{{message.createdAt}}</span>-->
+                          <!--<h4 class="title">-->
+                            <!--{{message.User.username}}-->
+                          <!--</h4>-->
+                          <!--<p class="summary">{{message.content}}</p>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+                <!--</tbody>-->
+              <!--</table>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<div *ngIf="!activeChat" class="messages-container">
+  <div class="messages-panel">
+    <table>
+      <tbody>
+        <tr *ngFor="let message of messages">
+          <td (click)="viewMessage(message.userId)">
+            <div class="message" [ngClass]="{new: message.status === 'new'}">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg">
+              <h1 class="username">
+                {{message.User.username}}
+                <span class="date">{{message.createdAt}}</span>
+              </h1>
+              <p class="content">{{message.content}}</p>
             </div>
-          </div>
-        </div>
-      </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <app-message-detail *ngIf="activeChat" [senderId]="senderId"></app-message-detail>
